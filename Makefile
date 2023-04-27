@@ -19,3 +19,5 @@ OBJS= $(addprefix ${OBJS_DIR}/ $(addsuffix .c, ${SRCF}))
 
 all: ${NAME}
 
+.PHONY: all
+

@@ -1,23 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstclear_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: heda-sil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/27 15:53:28 by heda-sil          #+#    #+#             */
-/*   Updated: 2023/04/27 21:22:40 by heda-sil         ###   ########.fr       */
+/*   Created: 2022/11/18 15:24:08 by heda-sil          #+#    #+#             */
+/*   Updated: 2022/11/18 17:14:05 by heda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
+#include "libft.h"
 
-int	main(int argc, char *argv[])//run prog as ARGS="" ./a.out ${=ARGS}
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	int i = -1;
-	if (argc < 2)
-		return (1);
-	while(argv[++i])
-		ft_printf("%s\n", argv[i]);
-	return (0);
+	t_list	*temp;
+
+	if (lst && del)
+	{
+		while (*lst != NULL)
+		{
+			temp = (*lst)->next;
+			ft_lstdelone(*lst, del);
+			*lst = temp;
+		}
+	}
 }

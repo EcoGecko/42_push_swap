@@ -1,23 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstadd_front_bonus.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: heda-sil <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: heda-sil <heda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/27 15:53:28 by heda-sil          #+#    #+#             */
-/*   Updated: 2023/04/27 21:22:40 by heda-sil         ###   ########.fr       */
+/*   Created: 2022/11/16 13:44:49 by heda-sil          #+#    #+#             */
+/*   Updated: 2022/11/18 15:50:30 by heda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
+#include "libft.h"
 
-int	main(int argc, char *argv[])//run prog as ARGS="" ./a.out ${=ARGS}
+void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	int i = -1;
-	if (argc < 2)
-		return (1);
-	while(argv[++i])
-		ft_printf("%s\n", argv[i]);
-	return (0);
+	if (!new)
+		return ;
+	new->next = *lst;
+	*lst = new;
 }

@@ -1,23 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: heda-sil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/27 15:53:28 by heda-sil          #+#    #+#             */
-/*   Updated: 2023/04/27 21:22:40 by heda-sil         ###   ########.fr       */
+/*   Created: 2022/11/03 12:44:33 by heda-sil          #+#    #+#             */
+/*   Updated: 2022/12/30 15:00:35 by heda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
+#include "libft.h"
+#include <stddef.h>
+#include <stdlib.h>
 
-int	main(int argc, char *argv[])//run prog as ARGS="" ./a.out ${=ARGS}
+void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	int i = -1;
-	if (argc < 2)
-		return (1);
-	while(argv[++i])
-		ft_printf("%s\n", argv[i]);
-	return (0);
+	size_t	i;
+
+	i = 0;
+	if (!dest && !src)
+		return (NULL);
+	while (i < n)
+	{
+		((unsigned char *)dest)[i] = ((unsigned char *)src)[i];
+		i++;
+	}
+	return (dest);
 }

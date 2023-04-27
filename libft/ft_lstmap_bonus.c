@@ -1,23 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstmap_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: heda-sil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/27 15:53:28 by heda-sil          #+#    #+#             */
-/*   Updated: 2023/04/27 21:22:40 by heda-sil         ###   ########.fr       */
+/*   Created: 2022/11/18 17:16:25 by heda-sil          #+#    #+#             */
+/*   Updated: 2022/11/18 17:35:48 by heda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
+#include "libft.h"
 
-int	main(int argc, char *argv[])//run prog as ARGS="" ./a.out ${=ARGS}
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	int i = -1;
-	if (argc < 2)
-		return (1);
-	while(argv[++i])
-		ft_printf("%s\n", argv[i]);
-	return (0);
+	t_list	*new_lst;
+	t_list	*node;
+
+	new_lst = NULL;
+	if (lst && f && del)
+	{
+		while (lst)
+		{
+			node = ft_lstnew(f(lst->content));
+			if (!node)
+				ft_lstclear(&node, del);
+			ft_lstadd_back(&new_lst, node);
+			lst = lst->next;
+		}
+	}
+	return (new_lst);
 }

@@ -1,23 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstiter_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: heda-sil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/27 15:53:28 by heda-sil          #+#    #+#             */
-/*   Updated: 2023/04/27 21:22:40 by heda-sil         ###   ########.fr       */
+/*   Created: 2022/11/18 11:05:05 by heda-sil          #+#    #+#             */
+/*   Updated: 2022/11/21 11:37:49 by heda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
+#include "libft.h"
 
-int	main(int argc, char *argv[])//run prog as ARGS="" ./a.out ${=ARGS}
+void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
-	int i = -1;
-	if (argc < 2)
-		return (1);
-	while(argv[++i])
-		ft_printf("%s\n", argv[i]);
-	return (0);
+	if (lst == NULL)
+		return ;
+	while (lst != NULL)
+	{
+		f(lst->content);
+		lst = lst->next;
+	}
 }

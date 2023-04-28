@@ -1,22 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: heda-sil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/27 15:53:28 by heda-sil          #+#    #+#             */
-/*   Updated: 2023/04/28 14:36:16 by heda-sil         ###   ########.fr       */
+/*   Created: 2023/04/28 12:56:34 by heda-sil          #+#    #+#             */
+/*   Updated: 2023/04/28 14:25:38 by heda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#ifndef PUSH_SWAP_H
+# define PUSH_SWAP_H
 
-int	main(int argc, char *argv[])//run prog as ARGS="" ./a.out ${=ARGS}
+# include "../libft/libft.h"
+
+typedef struct s_node
 {
-	if (argc < 2)
-		return (1);
-	if (validator(argv))
-		ft_putendl_fd("ERROR", STDERR_FILENO);
-	return (0);
-}
+	int	value;
+	int	index;
+	int	cost;
+}			t_node;
+
+typedef struct s_stack
+{
+	t_list	*stack;
+	int		size;
+}			t_stack;
+
+typedef struct s_data
+{
+	t_stack	*stack_a;
+	t_stack	*stack_b;
+}			t_data;
+
+//PARSER
+int	validator(char **input);
+#endif

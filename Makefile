@@ -18,18 +18,18 @@ LIBFT= ${LIBFT_DIR}/libft.a
 LIBFT_LIB= -L${LIBFT_DIR} -lft
 
 #FILES
-SRCF= 
+SRCF= parser
 
 SRCS= $(addprefix ${SRCS_DIR}/, $(addsuffix .c, ${SRCF}))
-OBJS= $(addprefix ${OBJS_DIR}/, $(addsuffix .c, ${SRCF}))
+OBJS= $(addprefix ${OBJS_DIR}/, $(addsuffix .o, ${SRCF}))
 
 all: ${NAME}
 
 ${NAME}: ${LIBFT} ${OBJS} main.c
-	${CC} ${CFLAGS} main.c ${OBJS} -I./${INCS} ${LIBFT_LIB} -o ${NAME}
+	${CC} ${CFLAGS} main.c ${OBJS} -I${INCS} ${LIBFT_LIB} -o ${NAME}
 
 ${OBJS_DIR}/%.o: ${SRCS_DIR}/%.c | ${OBJS_DIR}
-	${CC} ${CFLAGS} -I./${INC} -c $< -o $@
+	${CC} ${CFLAGS} -I${INCS} -c $< -o $@
 
 ${OBJS_DIR}:
 	mkdir -p ${OBJS_DIR}

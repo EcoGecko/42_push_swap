@@ -15,12 +15,12 @@
 
 # include "../libft/libft.h"
 
-typedef struct s_node
+typedef struct s_content
 {
 	int	value;
 	int	index;
 	int	cost;
-}			t_node;
+}			t_content;
 
 typedef struct s_stack
 {
@@ -39,9 +39,19 @@ typedef struct s_data
 int		validator(char **input);
 
 //STACK
-t_stack	*populate_stack(char **input, int size);
+t_stack	*create_stack(int capacity);
+void	populate_stack(t_stack *stack, char **input, int size);
+void	push_stack(t_stack *stack, t_list *node);
+t_list	*pop_stack(t_stack *stack);
 
 //OPS
 void	sx(t_stack *stack, char *op);
 void 	ss(t_data *data);
+void	px(t_stack *src, t_stack *dst, char *op);
+
+//OPS2
+void	rx(t_stack *stack, char *op);
+void	rr(t_data *data);
+void	rrx(t_stack *stack, char *op);
+void	rrr(t_data *data);
 #endif

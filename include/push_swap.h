@@ -6,7 +6,7 @@
 /*   By: heda-sil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 12:56:34 by heda-sil          #+#    #+#             */
-/*   Updated: 2023/04/28 14:25:38 by heda-sil         ###   ########.fr       */
+/*   Updated: 2023/05/01 12:01:59 by heda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,8 @@ typedef struct s_data
 }			t_data;
 
 //PARSER
-int	validator(char **input);
+int		validator(char **input);
+
+//STACK
+t_stack	*populate_stack(char **input, int size);
 #endif

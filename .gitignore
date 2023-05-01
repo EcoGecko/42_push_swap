@@ -1,4 +1,5 @@
 # Custom ignores
+checker_linux
 push_swap
 .idea
 

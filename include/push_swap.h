@@ -26,12 +26,13 @@ typedef struct s_stack
 {
 	t_list	*stack;
 	int		size;
+	int 	capacity;
 }			t_stack;
 
 typedef struct s_data
 {
-	t_stack	*stack_a;
-	t_stack	*stack_b;
+	t_stack	*a;
+	t_stack	*b;
 }			t_data;
 
 //PARSER
@@ -39,4 +40,8 @@ int		validator(char **input);
 
 //STACK
 t_stack	*populate_stack(char **input, int size);
+
+//OPS
+void	sx(t_stack *stack, char *op);
+void 	ss(t_data *data);
 #endif

@@ -4,7 +4,7 @@ NAME_BONUS= checker
 
 #COMPILING
 CC= cc
-CFLAGS= -Wall -Wextra -Werror
+CFLAGS= -Wall -Wextra -Werror #-fsanitize=address
 RM= rm -rf
 
 #DIRS
@@ -18,7 +18,7 @@ LIBFT= ${LIBFT_DIR}/libft.a
 LIBFT_LIB= -L${LIBFT_DIR} -lft
 
 #FILES
-SRCF= parser stack
+SRCF= parser stack ops
 
 SRCS= $(addprefix ${SRCS_DIR}/, $(addsuffix .c, ${SRCF}))
 OBJS= $(addprefix ${OBJS_DIR}/, $(addsuffix .o, ${SRCF}))

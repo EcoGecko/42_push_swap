@@ -20,15 +20,16 @@ t_stack	*populate_stack(char **input, int size)
 
 	stack = ft_calloc(1, sizeof(t_stack));
 	stack->size = size;
-	nbr = ft_calloc(1, sizeof(t_node));
-	nbr->value = ft_atoi(input[0]);
-	stack->stack = ft_lstnew(nbr);
-	i = -1;
-	while (input[++i])
+	stack->capacity = size;
+	stack->stack = NULL;
+	i = size - 1;
+	while (i >= 0)
 	{
 		nbr = ft_calloc(1, sizeof(t_node));
 		nbr->value = ft_atoi(input[i]);
-		ft_lstadd_front(&stack->stack, ft_lstnew(&nbr));
+		nbr->index = -1;
+		ft_lstadd_front(&stack->stack, ft_lstnew((t_node *)nbr));
+		i--;
 	}
 	return (stack);
 }

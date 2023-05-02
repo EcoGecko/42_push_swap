@@ -6,7 +6,7 @@
 /*   By: heda-sil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 15:53:28 by heda-sil          #+#    #+#             */
-/*   Updated: 2023/05/02 13:53:49 by heda-sil         ###   ########.fr       */
+/*   Updated: 2023/05/02 15:43:35 by heda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,21 +27,6 @@ void	print_stack(t_stack *stack) //REMOVE tmp function to print stacks
 	}
 }	
 
-/* void	print_stack(t_list **stack) //REMOVE tmp function to print stacks */
-/* { */
-/* 	t_list		*tmp; */
-
-/* 	if (stack) */
-/* 	{ */
-/* 		tmp = *stack; */
-/* 		while (tmp) */
-/* 		{ */
-/* 			ft_printf("[%d]\n", ((t_content *)tmp->content)->value); */
-/* 			tmp = tmp->next; */
-/* 		} */
-/* 	} */
-/* } */	
-
 int	main(int argc, char *argv[])//run prog as ARGS="" ./a.out ${=ARGS}
 {
 	t_data	data;
@@ -57,12 +42,7 @@ int	main(int argc, char *argv[])//run prog as ARGS="" ./a.out ${=ARGS}
 	data.b = create_stack(argc - 1, 0);
 	populate_stack(data.a, argv + 1);
 	get_index(data.a);
-	ft_printf("-----STACK A-----\n"); //REMOVE just printing stacks to visualize better
-	print_stack(data.a); //prints stack
-	ft_printf("-----STACK A-----\n");
-	print_stack(data.a); //prints stack
-	ft_printf("-----STACK B-----\n");
-	print_stack(data.b); //prints stack
+	sorter(&data);
 	clean_data(&data);
 	return (EXIT_SUCCESS);
 }

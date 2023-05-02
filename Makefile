@@ -18,7 +18,7 @@ LIBFT= ${LIBFT_DIR}/libft.a
 LIBFT_LIB= -L${LIBFT_DIR} -lft
 
 #FILES
-SRCF= parser stack ops ops2 utils
+SRCF= sorter stack ops ops2 utils
 
 SRCS= $(addprefix ${SRCS_DIR}/, $(addsuffix .c, ${SRCF}))
 OBJS= $(addprefix ${OBJS_DIR}/, $(addsuffix .o, ${SRCF}))

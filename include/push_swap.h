@@ -6,7 +6,7 @@
 /*   By: heda-sil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 12:56:34 by heda-sil          #+#    #+#             */
-/*   Updated: 2023/05/02 13:54:09 by heda-sil         ###   ########.fr       */
+/*   Updated: 2023/05/02 14:46:58 by heda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define PUSH_SWAP_H
 
 # include "../libft/libft.h"
+# include <stdbool.h>
 
 typedef struct s_content
 {
@@ -36,7 +37,9 @@ typedef struct s_data
 }			t_data;
 
 //SORTER
-
+void	sorter(t_data *data);
+bool	is_sorted(t_stack *stack);
+void	tri_sorter(t_stack *stack);
 
 //STACK
 t_stack	*create_stack(int capacity, int size);

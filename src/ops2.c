@@ -6,7 +6,7 @@
 /*   By: heda-sil <heda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 19:38:10 by heda-sil          #+#    #+#             */
-/*   Updated: 2023/05/02 13:52:48 by heda-sil         ###   ########.fr       */
+/*   Updated: 2023/05/02 15:39:12 by heda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -25,7 +25,7 @@ void	rx(t_stack *stack, char *op)
 	tmp->next = NULL;
 	last->next = tmp;
 	if (op)
-		ft_putendl_fd(op, STDIN_FILENO);
+		ft_putendl_fd(op, STDOUT_FILENO);
 }
 
 /*Shift up all elements of both stacks by 1, first becomes last*/
@@ -33,7 +33,7 @@ void	rr(t_data *data)
 {
 	rx(data->a, NULL);
 	rx(data->b, NULL);
-	ft_putendl_fd("rr", STDIN_FILENO);
+	ft_putendl_fd("rr", STDOUT_FILENO);
 }
 
 /*Shift down all elements of stack x by 1, last becomes first*/
@@ -54,7 +54,7 @@ void	rrx(t_stack *stack, char *op)
 	last->next = stack->stack;
 	stack->stack = last;
 	if (op)
-		ft_putendl_fd(op, STDIN_FILENO);
+		ft_putendl_fd(op, STDOUT_FILENO);
 }
 
 /*Shift down all elements of stack x by 1, last becomes first*/
@@ -62,5 +62,5 @@ void	rrr(t_data *data)
 {
 	rrx(data->a, NULL);
 	rrx(data->b, NULL);
-	ft_putendl_fd("rrr", STDIN_FILENO);
+	ft_putendl_fd("rrr", STDOUT_FILENO);
 }

@@ -6,7 +6,7 @@
 /*   By: heda-sil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 12:56:34 by heda-sil          #+#    #+#             */
-/*   Updated: 2023/05/02 11:53:40 by heda-sil         ###   ########.fr       */
+/*   Updated: 2023/05/02 13:54:09 by heda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ typedef struct s_stack
 {
 	t_list	*stack;
 	int		size;
-	int 	capacity;
+	int		capacity;
 }			t_stack;
 
 typedef struct s_data
@@ -35,8 +35,8 @@ typedef struct s_data
 	t_stack	*b;
 }			t_data;
 
-//PARSER
-int		validator(char **input);
+//SORTER
+
 
 //STACK
 t_stack	*create_stack(int capacity, int size);
@@ -46,7 +46,7 @@ t_list	*pop_stack(t_stack *stack);
 
 //OPS
 void	sx(t_stack *stack, char *op);
-void 	ss(t_data *data);
+void	ss(t_data *data);
 void	px(t_stack *src, t_stack *dst, char *op);
 
 //OPS2
@@ -59,4 +59,6 @@ void	rrr(t_data *data);
 void	del(void *content);
 void	clean_data(t_data *data);
 void	clean_stack(t_stack *stack);
+int		validator(char **input);
+void	get_index(t_stack *stack);
 #endif

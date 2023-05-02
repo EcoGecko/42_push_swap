@@ -6,7 +6,7 @@
 /*   By: heda-sil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 12:56:34 by heda-sil          #+#    #+#             */
-/*   Updated: 2023/05/01 12:01:59 by heda-sil         ###   ########.fr       */
+/*   Updated: 2023/05/02 11:42:47 by heda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,4 +54,9 @@ void	rx(t_stack *stack, char *op);
 void	rr(t_data *data);
 void	rrx(t_stack *stack, char *op);
 void	rrr(t_data *data);
+
+//UTILS
+void	del(void *content);
+void	clean_data(t_data *data);
+void	clean_stack(t_stack *stack);
 #endif

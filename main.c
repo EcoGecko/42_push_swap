@@ -6,16 +6,11 @@
 /*   By: heda-sil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 15:53:28 by heda-sil          #+#    #+#             */
-/*   Updated: 2023/05/01 17:51:47 by heda-sil         ###   ########.fr       */
+/*   Updated: 2023/05/02 11:43:37 by heda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	del(void *content)
-{
-	free(content);
-}
 
 void	print_stack(t_stack *stack) //REMOVE tmp function to print stacks
 {
@@ -54,15 +49,6 @@ int	main(int argc, char *argv[])//run prog as ARGS="" ./a.out ${=ARGS}
 	print_stack(data.a); //prints stack
 	ft_printf("-----STACK B-----\n");
 	print_stack(data.b); //prints stack
-	if (data.a)
-	{
-		ft_lstclear(&data.a->stack, del); //clears list and frees all content mem
-		free(data.a);
-	}
-	if (data.b)
-	{
-		ft_lstclear(&data.b->stack, del); //clears list and frees all content mem
-		free(data.b);
-	}
+	clean_data(&data);
 	return (EXIT_SUCCESS);
 }

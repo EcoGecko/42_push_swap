@@ -6,37 +6,34 @@
 /*   By: heda-sil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 11:47:31 by heda-sil          #+#    #+#             */
-/*   Updated: 2023/05/01 12:58:28 by heda-sil         ###   ########.fr       */
+/*   Updated: 2023/05/02 11:59:12 by heda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_stack *create_stack(int capacity)
+t_stack	*create_stack(int capacity, int size)
 {
 	t_stack	*stack;
 
 	stack = ft_calloc(1, sizeof(t_stack));
 	stack->capacity = capacity;
+	stack->size = size;
 	return (stack);
 }
 
-void	populate_stack(t_stack *stack, char **input, int size)
+void	populate_stack(t_stack *stack, char **input)
 {
 	t_content	*content;
-	int		i;
+	int			i;
 
-
-	stack->stack = NULL;
-	stack->size = size;
-	i = size - 1;
-	while (i >= 0)
+	i = stack->size;
+	while (--i >= 0)
 	{
 		content = ft_calloc(1, sizeof(t_content));
 		content->value = ft_atoi(input[i]);
 		content->index = -1;
 		ft_lstadd_front(&stack->stack, ft_lstnew((t_content *)content));
-		i--;
 	}
 }
 
@@ -60,7 +57,7 @@ void	push_stack(t_stack *stack, t_list *node)
 /*Removes the top node from stack*/
 t_list	*pop_stack(t_stack *stack)
 {
-	t_list *node;
+	t_list	*node;
 
 	if (!stack)
 		return (NULL);

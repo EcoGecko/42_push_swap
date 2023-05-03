@@ -6,7 +6,7 @@
 /*   By: heda-sil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 12:56:34 by heda-sil          #+#    #+#             */
-/*   Updated: 2023/05/02 14:46:58 by heda-sil         ###   ########.fr       */
+/*   Updated: 2023/05/03 11:37:00 by heda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,9 @@ typedef struct s_data
 	t_stack	*a;
 	t_stack	*b;
 }			t_data;
+
+//REMOVE
+void	print_stack(t_stack *stack);
 
 //SORTER
 void	sorter(t_data *data);

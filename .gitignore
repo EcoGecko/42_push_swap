@@ -1,8 +1,15 @@
-# Custom ignores
+# Custom ignores #
+
+# Exec
 checker_linux
 push_swap
-.idea
+
+#DIRS
 push_swap_visualizer/
+
+#IDE DIRS
+.idea/
+.vscode/
 
 # Prerequisites
 *.d

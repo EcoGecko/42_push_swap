@@ -6,7 +6,7 @@
 /*   By: heda-sil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 11:38:53 by heda-sil          #+#    #+#             */
-/*   Updated: 2023/05/02 13:54:27 by heda-sil         ###   ########.fr       */
+/*   Updated: 2023/05/04 14:45:12 by heda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void	clean_stack(t_stack *stack)
 	free(stack);
 }
 
+/*Validates input, checks for duplicates, and for non integer arguments*/
 int	validator(char **input)
 {
 	int	i;
@@ -39,6 +40,7 @@ int	validator(char **input)
 	i = 0;
 	while (input[++i])
 	{
+		is_int_range(input[i]);
 		j = i;
 		while (input[++j])
 		{
@@ -59,25 +61,17 @@ int	validator(char **input)
 	return (0);
 }
 
-void	get_index(t_stack *stack)
+/*Checks if argument is outside of int range*/
+void	is_int_range(char *input)
 {
-	t_list	*curr;
-	t_list	*tmp;
-
-	if (!stack || !stack->stack)
-		return ;
-	curr = stack->stack;
-	while (curr)
+	if (ft_strlen(input) >= 10 && input[9] > '7')
 	{
-		tmp = stack->stack;
-		((t_content *)curr->content)->index = stack->capacity - 1;
-		while (tmp)
-		{
-			if (((t_content *)curr->content)->value < \
-					((t_content *)tmp->content)->value)
-				((t_content *)curr->content)->index--;
-			tmp = tmp->next;
-		}
-		curr = curr->next;
+		ft_putendl_fd("ERROR", STDERR_FILENO);
+		exit(EXIT_FAILURE);
+	}
+	if (ft_strlen(input) >= 11 && input[0] == '-' && input[10] > '8')
+	{
+		ft_putendl_fd("ERROR", STDERR_FILENO);
+		exit(EXIT_FAILURE);
 	}
 }

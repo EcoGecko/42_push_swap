@@ -6,7 +6,7 @@
 /*   By: heda-sil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 12:56:34 by heda-sil          #+#    #+#             */
-/*   Updated: 2023/05/03 11:37:00 by heda-sil         ###   ########.fr       */
+/*   Updated: 2023/05/04 15:00:58 by heda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,15 @@
 # define PUSH_SWAP_H
 
 # include "../libft/libft.h"
-# include <stdbool.h>
 
 typedef struct s_content
 {
 	int	value;
-	int	index;
-	int	cost;
+	int	index; //final index
+	int	pos; //curr position in stack
+	int	r[3]; //nbr of ra rb and rr
+	int	rr[3]; //nbr of rra rrb and rrr
+	int	cost; //total nbr of moves
 }			t_content;
 
 typedef struct s_stack
@@ -28,6 +30,7 @@ typedef struct s_stack
 	t_list	*stack;
 	int		size;
 	int		capacity;
+	int		max;
 }			t_stack;
 
 typedef struct s_data
@@ -41,8 +44,14 @@ void	print_stack(t_stack *stack);
 
 //SORTER
 void	sorter(t_data *data);
-bool	is_sorted(t_stack *stack);
+int		is_sorted(t_stack *stack);
 void	tri_sorter(t_stack *stack);
+
+//SORTER_UTILS
+void	get_curr_index(t_stack *stack);
+void	get_final_index(t_stack *stack);
+int		ft_min(int nbr_1, int nbr_2);
+int		ft_max(int nbr_1, int nbr_2);
 
 //STACK
 t_stack	*create_stack(int capacity, int size);
@@ -66,5 +75,5 @@ void	del(void *content);
 void	clean_data(t_data *data);
 void	clean_stack(t_stack *stack);
 int		validator(char **input);
-void	get_index(t_stack *stack);
+void	is_int_range(char *input);
 #endif

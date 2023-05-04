@@ -6,17 +6,15 @@
 /*   By: heda-sil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 13:16:45 by heda-sil          #+#    #+#             */
-/*   Updated: 2023/05/03 14:05:57 by heda-sil         ###   ########.fr       */
+/*   Updated: 2023/05/04 15:01:25 by heda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+/*main sorting function*/
 void	sorter(t_data *data)
 {
-	int	max;
-
-	max = 0;
 	while (!is_sorted(data->a))
 	{
 		if (data->a->capacity == 2)
@@ -27,39 +25,41 @@ void	sorter(t_data *data)
 		{
 			if (data->b->size == 0)
 			{
-				while (data->a->size > 3)
+				while (data->a->size > 3 && data->b->size < 2)
 				{
-					if (max < ((t_content *)data->a->stack->content)->index)
-						max = ((t_content *)data->a->stack->content)->index;
+					ft_max(data->b->max, ((t_content *)data->a->stack->content)->index);
 					px(data->a, data->b, "pa");
 				}
 			}
 			while (data->a->size > 3)
 			{
-
-				px(data->a, data->b, "pa");
+				get_curr_index(data->a);
+				get_curr_index(data->b);
 			}
+			if (data->a->size == 3)
+				tri_sorter(data->a);
+			break ;
 		}
 	}
 }
 
 /*Checks if stack is sorted*/
-bool	is_sorted(t_stack *stack)
+int	is_sorted(t_stack *stack)
 {
 	int		i;
 	t_list	*tmp;
 
 	if (stack->size != stack->capacity)
-		return (false);
+		return (1);
 	tmp = stack->stack;
 	i = -1;
 	while (++i < stack->capacity)
 	{
 		if (((t_content *)tmp->content)->index != i)
-			return (false);
+			return (0);
 		tmp = tmp->next;
 	}
-	return (true);
+	return (1);
 }
 
 /*Sorts 3 elements stack*/

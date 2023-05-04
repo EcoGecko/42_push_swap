@@ -6,7 +6,7 @@
 /*   By: heda-sil <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 11:47:31 by heda-sil          #+#    #+#             */
-/*   Updated: 2023/05/02 11:59:12 by heda-sil         ###   ########.fr       */
+/*   Updated: 2023/05/04 15:03:23 by heda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ t_stack	*create_stack(int capacity, int size)
 	stack = ft_calloc(1, sizeof(t_stack));
 	stack->capacity = capacity;
 	stack->size = size;
+	stack->max = size - 1;
 	return (stack);
 }
 

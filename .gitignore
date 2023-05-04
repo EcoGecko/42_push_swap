@@ -2,6 +2,7 @@
 checker_linux
 push_swap
 .idea
+push_swap_visualizer/
 
 # Prerequisites
 *.d

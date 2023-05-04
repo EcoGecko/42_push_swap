@@ -22,7 +22,7 @@ void	get_curr_index(t_stack *stack)
 	i = -1;
 	while (tmp)
 	{
-		((t_content *)tmp->content)->pos = i;
+		((t_info *)tmp->content)->pos = i;
 		tmp = tmp->next;
 	}
 }
@@ -39,30 +39,31 @@ void	get_final_index(t_stack *stack)
 	while (curr)
 	{
 		tmp = stack->stack;
-		((t_content *)curr->content)->index = stack->capacity - 1;
+		((t_info *)curr->content)->index = stack->capacity - 1;
 		while (tmp)
 		{
-			if (((t_content *)curr->content)->value < \
-					((t_content *)tmp->content)->value)
-				((t_content *)curr->content)->index--;
+			if (((t_info *)curr->content)->value < \
+					((t_info *)tmp->content)->value)
+				((t_info *)curr->content)->index--;
 			tmp = tmp->next;
 		}
 		curr = curr->next;
 	}
 }
 
-int	ft_min(int nbr_1, int nbr_2)
+/*returns the minimum value*/
+int	ft_min(int x, int y)
 {
-	if (nbr_1 < nbr_2)
-		return (nbr_1);
+	if (x < y)
+		return (x);
 	else
-		return (nbr_2);
+		return (y);
 }
 
-int	ft_max(int nbr_1, int nbr_2)
+int	ft_max(int x, int y)
 {
-	if (nbr_1 > nbr_2)
-		return (nbr_1);
+	if (x > y)
+		return (x);
 	else
-		return (nbr_2);
+		return (y);
 }

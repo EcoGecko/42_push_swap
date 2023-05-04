@@ -27,7 +27,7 @@ void	sorter(t_data *data)
 			{
 				while (data->a->size > 3 && data->b->size < 2)
 				{
-					ft_max(data->b->max, ((t_content *)data->a->stack->content)->index);
+					ft_max(data->b->max, ((t_info *)data->a->stack->content)->index);
 					px(data->a, data->b, "pa");
 				}
 			}
@@ -55,7 +55,7 @@ int	is_sorted(t_stack *stack)
 	i = -1;
 	while (++i < stack->capacity)
 	{
-		if (((t_content *)tmp->content)->index != i)
+		if (((t_info *)tmp->content)->index != i)
 			return (0);
 		tmp = tmp->next;
 	}
@@ -65,13 +65,13 @@ int	is_sorted(t_stack *stack)
 /*Sorts 3 elements stack*/
 void	tri_sorter(t_stack *stack)
 {
-	t_content	*first;
-	t_content	*second;
-	t_content	*third;
+	t_info	*first;
+	t_info	*second;
+	t_info	*third;
 
-	first = (t_content *)stack->stack->content;
-	second = (t_content *)stack->stack->next->content;
-	third = (t_content *)stack->stack->next->next->content;
+	first = (t_info *)stack->stack->content;
+	second = (t_info *)stack->stack->next->content;
+	third = (t_info *)stack->stack->next->next->content;
 	if (first->index < second->index && third->index > first->index)
 	{
 		sx(stack, "sa");

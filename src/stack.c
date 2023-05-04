@@ -25,16 +25,16 @@ t_stack	*create_stack(int capacity, int size)
 
 void	populate_stack(t_stack *stack, char **input)
 {
-	t_content	*content;
-	int			i;
+	t_info	*content;
+	int		i;
 
 	i = stack->size;
 	while (--i >= 0)
 	{
-		content = ft_calloc(1, sizeof(t_content));
+		content = ft_calloc(1, sizeof(t_info));
 		content->value = ft_atoi(input[i]);
 		content->index = -1;
-		ft_lstadd_front(&stack->stack, ft_lstnew((t_content *)content));
+		ft_lstadd_front(&stack->stack, ft_lstnew((t_info *)content));
 	}
 }
 

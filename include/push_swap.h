@@ -15,7 +15,7 @@
 
 # include "../libft/libft.h"
 
-typedef struct s_content
+typedef struct s_info
 {
 	int	value;
 	int	index; //final index
@@ -23,7 +23,7 @@ typedef struct s_content
 	int	r[3]; //nbr of ra rb and rr
 	int	rr[3]; //nbr of rra rrb and rrr
 	int	cost; //total nbr of moves
-}			t_content;
+}			t_info;
 
 typedef struct s_stack
 {
@@ -50,8 +50,8 @@ void	tri_sorter(t_stack *stack);
 //SORTER_UTILS
 void	get_curr_index(t_stack *stack);
 void	get_final_index(t_stack *stack);
-int		ft_min(int nbr_1, int nbr_2);
-int		ft_max(int nbr_1, int nbr_2);
+int		ft_min(int x, int y);
+int		ft_max(int x, int y);
 
 //STACK
 t_stack	*create_stack(int capacity, int size);

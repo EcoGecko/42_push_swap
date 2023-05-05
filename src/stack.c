@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: heda-sil <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: heda-sil <heda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 11:47:31 by heda-sil          #+#    #+#             */
-/*   Updated: 2023/05/04 15:03:23 by heda-sil         ###   ########.fr       */
+/*   Updated: 2023/05/05 18:25:59 by heda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ t_stack	*create_stack(int capacity, int size)
 	stack->capacity = capacity;
 	stack->size = size;
 	stack->max = size - 1;
+	stack->min = capacity;
 	return (stack);
 }
 
@@ -34,6 +35,7 @@ void	populate_stack(t_stack *stack, char **input)
 		content = ft_calloc(1, sizeof(t_info));
 		content->value = ft_atoi(input[i]);
 		content->index = -1;
+		content->pos = -1;
 		ft_lstadd_front(&stack->stack, ft_lstnew((t_info *)content));
 	}
 }

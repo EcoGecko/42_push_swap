@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: heda-sil <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: heda-sil <heda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 12:56:34 by heda-sil          #+#    #+#             */
-/*   Updated: 2023/05/04 15:00:58 by heda-sil         ###   ########.fr       */
+/*   Updated: 2023/05/05 20:26:44 by heda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ typedef struct s_info
 	int	pos; //curr position in stack
 	int	r[3]; //nbr of ra rb and rr
 	int	rr[3]; //nbr of rra rrb and rrr
+	int	ops[4]; //cost of the ops combinations ra + rb; ra + rrb; rb + rra; rra +rrb;
 	int	cost; //total nbr of moves
 }			t_info;
 
@@ -31,6 +32,7 @@ typedef struct s_stack
 	int		size;
 	int		capacity;
 	int		max;
+	int		min;
 }			t_stack;
 
 typedef struct s_data
@@ -50,8 +52,8 @@ void	tri_sorter(t_stack *stack);
 //SORTER_UTILS
 void	get_curr_index(t_stack *stack);
 void	get_final_index(t_stack *stack);
-int		ft_min(int x, int y);
-int		ft_max(int x, int y);
+void	ft_min(int *x, int y);
+void	ft_max(int *x, int y);
 
 //STACK
 t_stack	*create_stack(int capacity, int size);

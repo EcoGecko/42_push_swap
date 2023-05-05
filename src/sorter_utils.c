@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sorter_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: heda-sil <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: heda-sil <heda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 12:43:16 by heda-sil          #+#    #+#             */
-/*   Updated: 2023/05/04 14:55:20 by heda-sil         ###   ########.fr       */
+/*   Updated: 2023/05/05 20:07:30 by heda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	get_curr_index(t_stack *stack)
 	i = -1;
 	while (tmp)
 	{
-		((t_info *)tmp->content)->pos = i;
+		((t_info *)tmp->content)->pos = ++i;
 		tmp = tmp->next;
 	}
 }
@@ -52,18 +52,18 @@ void	get_final_index(t_stack *stack)
 }
 
 /*returns the minimum value*/
-int	ft_min(int x, int y)
+void	ft_min(int *x, int y)
 {
-	if (x < y)
-		return (x);
+	if (*x < y)
+		return ;
 	else
-		return (y);
+		*x = y;
 }
 
-int	ft_max(int x, int y)
+void	ft_max(int *x, int y)
 {
-	if (x > y)
-		return (x);
+	if (*x > y)
+		return ;
 	else
-		return (y);
+		*x = y;
 }

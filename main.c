@@ -6,7 +6,7 @@
 /*   By: heda-sil <heda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 15:53:28 by heda-sil          #+#    #+#             */
-/*   Updated: 2023/05/05 20:07:45 by heda-sil         ###   ########.fr       */
+/*   Updated: 2023/05/08 14:42:24 by heda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@ void	print_stack(t_stack *stack) // REMOVE tmp function to print stacks
 	if (stack)
 	{
 		tmp = stack->stack;
-		ft_printf("[VALUE]-[INDEX]-[POS]-[MAX]-[MIN]\n");
+		ft_printf("[VALUE]-[INDEX]-[POS]-[MAX]\n");
 		while (tmp)
 		{
-			ft_printf("[%d]-[%d]-[%d]-[%d]-[%d]\n", \
+			ft_printf("[%d]-[%d]-[%d]-[%d]\n", \
 			((t_info *)tmp->content)->value, ((t_info *)tmp->content)->index, \
-			((t_info *)tmp->content)->pos, stack->max, stack->min);
+			((t_info *)tmp->content)->pos, stack->max);
 			tmp = tmp->next;
 		}
 	}

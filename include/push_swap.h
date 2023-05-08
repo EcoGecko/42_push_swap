@@ -6,7 +6,7 @@
 /*   By: heda-sil <heda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 12:56:34 by heda-sil          #+#    #+#             */
-/*   Updated: 2023/05/05 20:26:44 by heda-sil         ###   ########.fr       */
+/*   Updated: 2023/05/08 18:31:54 by heda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ typedef struct s_info
 	int	r[3]; //nbr of ra rb and rr
 	int	rr[3]; //nbr of rra rrb and rrr
 	int	ops[4]; //cost of the ops combinations ra + rb; ra + rrb; rb + rra; rra +rrb;
+	int	ops_idx; //cheapest operation set index;
 	int	cost; //total nbr of moves
 }			t_info;
 
@@ -32,7 +33,6 @@ typedef struct s_stack
 	int		size;
 	int		capacity;
 	int		max;
-	int		min;
 }			t_stack;
 
 typedef struct s_data
@@ -52,8 +52,8 @@ void	tri_sorter(t_stack *stack);
 //SORTER_UTILS
 void	get_curr_index(t_stack *stack);
 void	get_final_index(t_stack *stack);
-void	ft_min(int *x, int y);
-void	ft_max(int *x, int y);
+int		ft_min(int	x, int y);
+void	do_ops(t_data *data);
 
 //STACK
 t_stack	*create_stack(int capacity, int size);
@@ -65,6 +65,8 @@ t_list	*pop_stack(t_stack *stack);
 void	sx(t_stack *stack, char *op);
 void	ss(t_data *data);
 void	px(t_stack *src, t_stack *dst, char *op);
+void	get_ops_cost(t_stack *stack_a, t_stack *stack_b);
+void	assign_cost(t_info *info, int size);
 
 //OPS2
 void	rx(t_stack *stack, char *op);

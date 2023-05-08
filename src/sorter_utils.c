@@ -6,7 +6,7 @@
 /*   By: heda-sil <heda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 12:43:16 by heda-sil          #+#    #+#             */
-/*   Updated: 2023/05/05 20:07:30 by heda-sil         ###   ########.fr       */
+/*   Updated: 2023/05/08 18:34:21 by heda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,19 +51,24 @@ void	get_final_index(t_stack *stack)
 	}
 }
 
-/*returns the minimum value*/
-void	ft_min(int *x, int y)
+int	ft_min(int x, int y)
 {
-	if (*x < y)
-		return ;
+	if (x < y)
+		return (x);
 	else
-		*x = y;
+		return (y);
 }
 
-void	ft_max(int *x, int y)
+void	do_ops(t_data *data)
 {
-	if (*x > y)
-		return ;
-	else
-		*x = y;
+	t_info	*info_b;
+
+	info_b = data->b->stack->content;
+	while (info_b->ops[info_b->ops_idx] > 0)
+	{
+		if (info_b->r[2])
+			rr(data);
+		px(data->b, data->a, "pb");
+		break ; //DELETE - tmp just while i don't fix the loop
+	}	
 }

@@ -6,7 +6,7 @@
 /*   By: heda-sil <heda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 13:16:45 by heda-sil          #+#    #+#             */
-/*   Updated: 2023/05/05 20:23:28 by heda-sil         ###   ########.fr       */
+/*   Updated: 2023/05/08 18:15:44 by heda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,32 +23,21 @@ void	sorter(t_data *data)
 			tri_sorter(data->a);
 		else
 		{
-			if (data->b->size == 0)
+			while (data->a->size > 3) 
 			{
-				while (data->a->size > 3 && data->b->size < 2)
-				{
-					ft_max(&data->b->max, ((t_info *)data->a->stack->content)->index);
-					ft_min(&data->b->min, ((t_info *)data->a->stack->content)->index);
+				if (((t_info *)data->a->stack->content)->index != data->a->max \
+				&& ((t_info *)data->a->stack->content)->index != 0 && \
+				((t_info *)data->a->stack->content)->index != data->a->max / 2)
 					px(data->a, data->b, "pa");
-				}
+				else
+					rx(data->a, "ra");
 			}
-			while (data->a->size > 3) //get lower cost movement and sort nbrs into stack b
-			{
-				get_curr_index(data->a);
-				get_curr_index(data->b);
-				px(data->a, data->b, "pa");
-				break ;
-			}
-			if (data->a->size == 3 && !is_sorted(data->a)) //BUG if stack a is already sorted it will unsorted
+			if (!is_sorted(data->a))
 				tri_sorter(data->a);
-			while (data->b->size > 0) //put nbrs back into stack one
-			{
-				get_curr_index(data->a);
-				get_curr_index(data->b);
-				break ;
-			}
-			break ;
+			get_ops_cost(data->a, data->b); //get lower cost movement and sort nbrs into stack b
+			do_ops(data);
 		}
+		break ; //DELETE - temporary way to break cycle while i dont finish the sorting
 	}
 }
 
@@ -64,7 +53,8 @@ int	is_sorted(t_stack *stack)
 	i = -1;
 	while (++i < stack->size - 1)
 	{
-		if (((t_info *)tmp->content)->index > ((t_info *)tmp->next->content)->index)
+		if (((t_info *)tmp->content)->index > \
+		((t_info *)tmp->next->content)->index)
 			return (0);
 		tmp = tmp->next;
 	}

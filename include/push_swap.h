@@ -6,7 +6,7 @@
 /*   By: heda-sil <heda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 12:56:34 by heda-sil          #+#    #+#             */
-/*   Updated: 2023/05/08 18:31:54 by heda-sil         ###   ########.fr       */
+/*   Updated: 2023/05/11 15:48:53 by heda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define PUSH_SWAP_H
 
 # include "../libft/libft.h"
+# include <limits.h>
 
 typedef struct s_info
 {
@@ -48,6 +49,8 @@ void	print_stack(t_stack *stack);
 void	sorter(t_data *data);
 int		is_sorted(t_stack *stack);
 void	tri_sorter(t_stack *stack);
+void	sort_a(t_data *data);
+
 
 //SORTER_UTILS
 void	get_curr_index(t_stack *stack);

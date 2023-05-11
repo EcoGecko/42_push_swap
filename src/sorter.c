@@ -6,7 +6,7 @@
 /*   By: heda-sil <heda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 13:16:45 by heda-sil          #+#    #+#             */
-/*   Updated: 2023/05/08 18:15:44 by heda-sil         ###   ########.fr       */
+/*   Updated: 2023/05/11 18:04:31 by heda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ void	sorter(t_data *data)
 			sx(data->a, "sa");
 		else if (data->a->capacity == 3)
 			tri_sorter(data->a);
-		else
+		else if (data->b->size == 0 && !is_sorted(data->a))
 		{
-			while (data->a->size > 3) 
+			while (data->a->size > 3)
 			{
 				if (((t_info *)data->a->stack->content)->index != data->a->max \
 				&& ((t_info *)data->a->stack->content)->index != 0 && \
@@ -32,12 +32,8 @@ void	sorter(t_data *data)
 				else
 					rx(data->a, "ra");
 			}
-			if (!is_sorted(data->a))
-				tri_sorter(data->a);
-			get_ops_cost(data->a, data->b); //get lower cost movement and sort nbrs into stack b
-			do_ops(data);
 		}
-		break ; //DELETE - temporary way to break cycle while i dont finish the sorting
+		sort_a(data);
 	}
 }
 
@@ -87,4 +83,45 @@ void	tri_sorter(t_stack *stack)
 		sx(stack, "sa");
 	if (second->index < third->index && third->index < first->index)
 		rx(stack, "ra");
+}
+
+void	sort_a(t_data *data)
+{
+	t_list	*tmp;
+	int		rot;
+	int		rrot;
+
+	if (data->b->size > 0)
+		{
+			if (!is_sorted(data->a) && data->a->size == 3)
+				tri_sorter(data->a);
+			ft_printf("STACK A\n");
+			print_stack(data->a);
+			ft_printf("STACK B\n");
+			print_stack(data->b);
+			get_ops_cost(data->a, data->b); //get lower cost movement and sort 	nbrs into stack b
+			do_ops(data);
+			ft_printf("AFTER DO_OPS\n");
+			ft_printf("STACK A\n");
+			print_stack(data->a);
+			ft_printf("STACK B\n");
+			print_stack(data->b);
+		}
+		if (data->b->size == 0)
+		{
+			tmp = data->a->stack;
+			get_curr_index(data->a);
+			while (tmp && ((t_info *)tmp->content)->index != 0)
+				tmp = tmp->next;
+			print_stack(data->a);
+			rrot = data->a->size - ((t_info *)tmp->content)->pos;
+			rot = ((t_info *)tmp->content)->pos;
+			// exit(0);
+			if (rot < rrot)
+				while (--rot > -1)
+					rx(data->a, "ra");
+			else
+				while (--rrot > -1)
+					rrx(data->a, "rra");
+		}
 }

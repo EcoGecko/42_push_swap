@@ -6,7 +6,7 @@
 /*   By: heda-sil <heda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 12:43:16 by heda-sil          #+#    #+#             */
-/*   Updated: 2023/05/08 18:34:21 by heda-sil         ###   ########.fr       */
+/*   Updated: 2023/05/11 17:54:29 by heda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,11 +64,44 @@ void	do_ops(t_data *data)
 	t_info	*info_b;
 
 	info_b = data->b->stack->content;
-	while (info_b->ops[info_b->ops_idx] > 0)
+	if 	(info_b->ops_idx == 0)
 	{
-		if (info_b->r[2])
+		info_b->r[0] -= info_b->r[2];
+		info_b->r[1] -= info_b->r[2];
+		while (--info_b->r[2] > -1)
 			rr(data);
-		px(data->b, data->a, "pb");
-		break ; //DELETE - tmp just while i don't fix the loop
-	}	
+		while (--info_b->r[0] > -1)
+		{
+			ft_printf("AQUI\n");
+			rx(data->a, "ra");
+		}
+		while (--info_b->r[1] > -1)
+			rx(data->b, "rb");
+	}
+	if 	(info_b->ops_idx == 1)
+	{
+		while (--info_b->r[0] > -1)
+			rx(data->a, "ra");
+		while (--info_b->rr[1] > -1)
+			rrx(data->b, "rb");
+	}
+	if 	(info_b->ops_idx == 2)
+	{
+		while (--info_b->rr[0] > -1)
+			rrx(data->a, "rra");
+		while (--info_b->r[1] > -1)
+			rx(data->b, "rb");
+	}
+	if 	(info_b->ops_idx == 3)
+	{
+		info_b->rr[0] -= info_b->rr[2];
+		info_b->rr[1] -= info_b->rr[2];
+		while (--info_b->rr[2] > -1)
+			rr(data);
+		while (--info_b->rr[0] > -1)
+			rx(data->a, "rra");
+		while (--info_b->rr[1] > -1)
+			rx(data->b, "rrb");
+	}
+	px(data->b, data->a, "pb");
 }

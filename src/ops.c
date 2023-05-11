@@ -6,7 +6,7 @@
 /*   By: heda-sil <heda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 18:32:08 by heda-sil          #+#    #+#             */
-/*   Updated: 2023/05/08 17:54:13 by heda-sil         ###   ########.fr       */
+/*   Updated: 2023/05/11 18:02:07 by heda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,18 +49,25 @@ void	get_ops_cost(t_stack *stack_a, t_stack *stack_b)
 {
 	t_list	*tmp_a;
 	t_list	*tmp_b;
+	t_info	*info;
+	int		limit;
 
-	get_curr_index(stack_b);
+	limit = INT_MAX;
 	tmp_b = stack_b->stack;
+	info = ((t_info *)tmp_b->content);
 	while (tmp_b)
 	{
+		get_curr_index(stack_b);
 		tmp_a = stack_a->stack;
-		((t_info *)tmp_b->content)->rr[0] = stack_a->size;
-		while (((t_info *)tmp_b->content)->index > \
-		((t_info *)tmp_a->content)->index)
+		// info->rr[0] = stack_a->size;
+		while (tmp_a)
 		{
-			((t_info *)tmp_b->content)->r[0]++;
-			((t_info *)tmp_b->content)->rr[0]--;
+			if (((t_info *)tmp_a->content)->index > info->index && info->index < limit)
+			{
+				limit = ((t_info *)tmp_a->content)->index;
+				info->r[0]++;
+			}
+				info->rr[0]++;
 			tmp_a = tmp_a->next;
 		}
 		assign_cost(tmp_b->content, stack_b->size);
@@ -77,7 +84,7 @@ void	assign_cost(t_info *info, int size)
 		info->rr[2] = ft_min(info->rr[0], info->rr[1]);
 		info->ops[0] = info->r[0] + info->r[1] - info->r[2];
 		info->ops[1] = info->r[0] + info->rr[1];
-		info->ops[2] = info->rr[0] + info->r[1];
+		info->ops[2] = info->r[1] + info->rr[0];
 		info->ops[3] = info->rr[0] + info->rr[1] - info->rr[2];
 		info->ops_idx = 0;
 		if (info->ops[1] < info->ops[info->ops_idx])
@@ -87,10 +94,10 @@ void	assign_cost(t_info *info, int size)
 		else if (info->ops[3] < info->ops[info->ops_idx])
 			info->ops_idx = 3;
 		info->cost = info->ops[info->ops_idx];
-		ft_printf("pos0[%d]\n", info->ops[0]);
-		ft_printf("pos1[%d]\n", info->ops[1]);
-		ft_printf("pos2[%d]\n", info->ops[2]);
-		ft_printf("pos3[%d]\n", info->ops[3]);
+		ft_printf("pos0[%d]ra[%d]rb[%d]rr[%d]\n", info->ops[0], info->r[0],info->r[1],info->r[2]);
+		ft_printf("pos1[%d]ra[%d]rb[%d]\n", info->ops[1], info->r[0], info->rr[1]);
+		ft_printf("pos2[%d]rra[%d]rb[%d]\n", info->ops[2], info->rr[0], info->r[1]);
+		ft_printf("pos3[%d]rra[%d]rrb[%d]rrr[%d]\n", info->ops[3], info->rr[0], info->rr[1], info->rr[2]);
 		ft_printf("OPS_ID[%d]\n", info->ops_idx);
 		ft_printf("COST[%d]\n", info->cost);
 }

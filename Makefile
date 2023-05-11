@@ -50,7 +50,7 @@ fclean: clean
 re: fclean all
 
 debug: ${LIBFT}
-	${CC} -g3 main.c ${SRCS} -I./${INCS} ${LIBFT_LIB} -o ${NAME}
+	${CC} -g3 main.c ${SRCS} -I${INCS} ${LIBFT_LIB} -o ${NAME}
 
-.PHONY: all
+.PHONY: all clean fclean re
 .SILENT:

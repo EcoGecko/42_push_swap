@@ -19,9 +19,12 @@ LIBFT_LIB= -L${LIBFT_DIR} -lft
 
 #FILES
 SRCF= sorter stack ops ops2 utils sorter_utils
+SRCF_B= 
 
 SRCS= $(addprefix ${SRCS_DIR}/, $(addsuffix .c, ${SRCF}))
+SRCS_BONUS= $(addprefix ${SRCS_DIR}/, $(addsuffix .c, ${SRCF_B}))
 OBJS= $(addprefix ${OBJS_DIR}/, $(addsuffix .o, ${SRCF}))
+OBJS_BONUS= $(addprefix ${OBJS_DIR}/, $(addsuffix .o, ${SRCF_B}))
 
 all: ${NAME}
 
@@ -37,7 +40,10 @@ ${OBJS_DIR}:
 ${LIBFT}:
 	make bonus -sC ${LIBFT_DIR}
 
-bonus:
+bonus: ${NAME_BONUS}
+
+${NAME_BONUS}: ${LIBFT} ${OBJS_BONUS} main_bonus.c
+	${CC} ${CFLAGS} main_bonus.c ${OBJS_BONUS} -I${INCS} ${LIBFT_LIB} -o ${NAME_BONUS}
 
 clean:
 	${RM} ${OBJS_DIR}

@@ -47,11 +47,11 @@ int	main(int argc, char *argv[]) // run prog as ARGS="" ./a.out ${=ARGS}
 	data.b = create_stack(argc - 1, 0);
 	populate_stack(data.a, argv + 1);
 	get_final_index(data.a);
-	print_stack(data.a);
+//	print_stack(data.a); //REMOVE
 	sorter(&data);
-	print_stack(data.a);
-	ft_printf("B\n");
-	print_stack(data.b);
+//	print_stack(data.a); //REMOVE
+//	ft_printf("B\n"); //REMOVE
+//	print_stack(data.b); //REMOVE
 	clean_data(&data);
 	return (EXIT_SUCCESS);
 }

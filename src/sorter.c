@@ -92,36 +92,39 @@ void	sort_a(t_data *data)
 	int		rrot;
 
 	if (data->b->size > 0)
-		{
-			if (!is_sorted(data->a) && data->a->size == 3)
-				tri_sorter(data->a);
-			ft_printf("STACK A\n");
-			print_stack(data->a);
-			ft_printf("STACK B\n");
-			print_stack(data->b);
-			get_ops_cost(data->a, data->b); //get lower cost movement and sort 	nbrs into stack b
-			do_ops(data);
-			ft_printf("AFTER DO_OPS\n");
-			ft_printf("STACK A\n");
-			print_stack(data->a);
-			ft_printf("STACK B\n");
-			print_stack(data->b);
-		}
-		if (data->b->size == 0)
-		{
-			tmp = data->a->stack;
-			get_curr_index(data->a);
-			while (tmp && ((t_info *)tmp->content)->index != 0)
-				tmp = tmp->next;
-			print_stack(data->a);
-			rrot = data->a->size - ((t_info *)tmp->content)->pos;
-			rot = ((t_info *)tmp->content)->pos;
-			// exit(0);
-			if (rot < rrot)
-				while (--rot > -1)
-					rx(data->a, "ra");
-			else
-				while (--rrot > -1)
-					rrx(data->a, "rra");
-		}
+	{
+		if (!is_sorted(data->a) && data->a->size == 3)
+			tri_sorter(data->a);
+//		ft_printf("STACK A\n"); //REMOVE
+//		print_stack(data->a); //REMOVE
+//		ft_printf("STACK B\n"); //REMOVE
+//		print_stack(data->b); //REMOVE
+		get_ops_cost(data->a, data->b); //get lower cost movement and sort 	nbrs into stack b
+		do_ops(data);
+//		ft_printf("AFTER DO_OPS\n"); //REMOVE
+//		ft_printf("STACK A\n"); //REMOVE
+//		print_stack(data->a); //REMOVE
+//		ft_printf("STACK B\n"); //REMOVE
+//		print_stack(data->b); //REMOVE
+//		exit(0); //REMOVE
+
+	}
+	if (data->b->size == 0)
+	{
+		tmp = data->a->stack;
+		get_curr_index(data->a);
+		while (tmp && ((t_info *)tmp->content)->index != 0)
+			tmp = tmp->next;
+//		print_stack(data->a); //REMOVE
+		rrot = data->a->size - ((t_info *)tmp->content)->pos;
+		rot = ((t_info *)tmp->content)->pos;
+//		 exit(0); //REMOVE
+		if (rot < rrot)
+			while (--rot > -1)
+				rx(data->a, "ra");
+		else
+			while (--rrot > -1)
+				rrx(data->a, "rra");
+//		print_stack(data->a); //REMOVE
+	}
 }

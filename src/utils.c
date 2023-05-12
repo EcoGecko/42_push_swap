@@ -6,7 +6,7 @@
 /*   By: heda-sil <heda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 11:38:53 by heda-sil          #+#    #+#             */
-/*   Updated: 2023/05/12 17:44:39 by heda-sil         ###   ########.fr       */
+/*   Updated: 2023/05/12 20:21:29 by heda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 void	del(void *content)
 {
 	free(content);
+	content = NULL;
 }
 
 void	clean_data(t_data *data)
@@ -32,7 +33,7 @@ void	clean_stack(t_stack *stack)
 }
 
 /*Validates input, checks for duplicates, and for non integer arguments*/
-int	validator(char **input)
+int	validator(char **input) //?DO i need to verify when input is ""
 {
 	int	i;
 	int	j;
@@ -40,6 +41,8 @@ int	validator(char **input)
 	i = 0;
 	while (input[++i])
 	{
+		if (!*input[i])
+			return (1);
 		j = i;
 		while (input[++j])
 		{

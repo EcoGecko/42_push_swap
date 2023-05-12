@@ -6,7 +6,7 @@
 /*   By: heda-sil <heda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 11:38:53 by heda-sil          #+#    #+#             */
-/*   Updated: 2023/05/12 17:04:16 by heda-sil         ###   ########.fr       */
+/*   Updated: 2023/05/12 17:44:39 by heda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ int	validator(char **input)
 	i = 0;
 	while (input[++i])
 	{
-		is_int_range(input[i]);
 		j = i;
 		while (input[++j])
 		{
@@ -54,24 +53,10 @@ int	validator(char **input)
 		{
 			if (input[i][j] == '-' && j == 0)
 				j++;
-			if (!ft_isdigit(input[i][j]) && ft_atoll(input[i]) > INT_MAX)
+			if (!ft_isdigit(input[i][j]) || \
+			(ft_atol(input[i]) > INT_MAX || ft_atol(input[i]) < INT_MIN))
 				return (1);
 		}
 	}
 	return (0);
-}
-
-/*Checks if argument is outside of int range*/
-void	is_int_range(char *input) // BUG - NOT WORKING - compare all str
-{
-	if (ft_strlen(input) >= 10 && input[9] > '7')
-	{
-		ft_putendl_fd("ERROR", STDERR_FILENO);
-		exit(EXIT_FAILURE);
-	}
-	if (ft_strlen(input) >= 11 && input[0] == '-' && input[10] > '8')
-	{
-		ft_putendl_fd("ERROR", STDERR_FILENO);
-		exit(EXIT_FAILURE);
-	}
 }

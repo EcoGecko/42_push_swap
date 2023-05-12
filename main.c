@@ -6,7 +6,7 @@
 /*   By: heda-sil <heda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 15:53:28 by heda-sil          #+#    #+#             */
-/*   Updated: 2023/05/11 11:50:21 by heda-sil         ###   ########.fr       */
+/*   Updated: 2023/05/12 15:43:53 by heda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,7 @@ int	main(int argc, char *argv[]) // run prog as ARGS="" ./a.out ${=ARGS}
 	data.b = create_stack(argc - 1, 0);
 	populate_stack(data.a, argv + 1);
 	get_final_index(data.a);
-//	print_stack(data.a); //REMOVE
 	sorter(&data);
-//	print_stack(data.a); //REMOVE
-//	ft_printf("B\n"); //REMOVE
-//	print_stack(data.b); //REMOVE
 	clean_data(&data);
 	return (EXIT_SUCCESS);
 }

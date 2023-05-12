@@ -6,7 +6,7 @@
 /*   By: heda-sil <heda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 12:43:16 by heda-sil          #+#    #+#             */
-/*   Updated: 2023/05/11 17:54:29 by heda-sil         ###   ########.fr       */
+/*   Updated: 2023/05/12 16:56:17 by heda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,11 +59,16 @@ int	ft_min(int x, int y)
 		return (y);
 }
 
-void	do_ops(t_data *data)
+/* Performs stack operations */
+void	do_ops(t_data *data) //TODO! NEEDS REFACTOR SPLIT INTO TWO 
 {
 	t_info	*info_b;
+	t_list	*tmp;
 
-	info_b = data->b->stack->content;
+	tmp = data->b->stack;
+	while (tmp && data->b->cheapest != ((t_info *)tmp->content)->cost)
+		tmp = tmp->next;
+	info_b = tmp->content;
 	if (info_b->ops_idx == 0)
 	{
 		info_b->r[0] -= info_b->r[2];
@@ -100,5 +105,5 @@ void	do_ops(t_data *data)
 		while (--info_b->rr[1] > -1)
 			rrx(data->b, "rrb");
 	}
-	px(data->b, data->a, "pb");
+	px(data->b, data->a, "pa");
 }

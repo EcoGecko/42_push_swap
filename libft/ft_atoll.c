@@ -1,34 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_db_free.c                                       :+:      :+:    :+:   */
+/*   ft_atoll.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: heda-sil <heda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/22 15:14:42 by heda-sil          #+#    #+#             */
-/*   Updated: 2023/05/12 17:00:42 by heda-sil         ###   ########.fr       */
+/*   Created: 2022/11/11 10:20:34 by heda-sil          #+#    #+#             */
+/*   Updated: 2023/05/12 16:59:17 by heda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
-void	ft_db_free(char **mat)
+long long	ft_atoll(const char *nptr)
 {
-	int	i;
+	int			i;
+	int			sign;
+	long long	num;
 
-	i = -1;
-	if (mat)
+	num = 0;
+	sign = 1;
+	i = 0;
+	while ((nptr[i] >= '\t' && nptr[i] <= '\r') || nptr[i] == ' ')
+		i++;
+	if (nptr[i] == '+' || nptr[i] == '-')
 	{
-		while (mat[++i])
-		{
-			if (mat[i])
-			{
-				free(mat[i]);
-				mat[i] = NULL;
-			}
-		}
-		free(mat);
-		mat = NULL;
+		if (nptr[i] == '-')
+			sign *= -1;
+		i++;
 	}
+	while (nptr[i] >= '0' && nptr[i] <= '9')
+	{
+		num = num * 10 + nptr[i] - '0';
+		i++;
+	}
+	return (num * sign);
 }

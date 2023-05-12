@@ -14,7 +14,7 @@ SRCF = ft_isalpha ft_isdigit ft_isalnum ft_isascii ft_isprint\
 	  ft_strdup ft_substr ft_strjoin ft_strtrim ft_split ft_itoa\
 	  ft_strmapi ft_striteri ft_putchar_fd ft_putstr_fd\
 	  ft_putendl_fd ft_putnbr_fd get_next_line ft_nbr_utils ft_print_chars\
-	  ft_printf ft_print_nbrs ft_print_ptr ft_db_free
+	  ft_printf ft_print_nbrs ft_print_ptr ft_db_free ft_free ft_atol ft_atoll
 
 SRCF_BONUS = ft_lstnew_bonus ft_lstadd_front_bonus ft_lstsize_bonus\
 			ft_lstlast_bonus ft_lstadd_back_bonus ft_lstdelone_bonus\

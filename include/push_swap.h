@@ -6,7 +6,7 @@
 /*   By: heda-sil <heda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 12:56:34 by heda-sil          #+#    #+#             */
-/*   Updated: 2023/05/11 15:48:53 by heda-sil         ###   ########.fr       */
+/*   Updated: 2023/05/12 14:44:29 by heda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ typedef struct s_stack
 	int		size;
 	int		capacity;
 	int		max;
+	int		cheapest;
 }			t_stack;
 
 typedef struct s_data

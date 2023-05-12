@@ -1,11 +1,12 @@
 # Custom ignores #
 
 # Exec
-checker_linux
+checker
 push_swap
 
-#DIRS
+#Testers
 push_swap_visualizer/
+Push-Swap-Tester/
 
 #IDE DIRS
 .idea/

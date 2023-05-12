@@ -6,7 +6,7 @@
 /*   By: heda-sil <heda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 11:38:53 by heda-sil          #+#    #+#             */
-/*   Updated: 2023/05/11 17:45:02 by heda-sil         ###   ########.fr       */
+/*   Updated: 2023/05/12 17:04:16 by heda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int	validator(char **input)
 		{
 			if (input[i][j] == '-' && j == 0)
 				j++;
-			if (!ft_isdigit(input[i][j]))
+			if (!ft_isdigit(input[i][j]) && ft_atoll(input[i]) > INT_MAX)
 				return (1);
 		}
 	}

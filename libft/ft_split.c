@@ -6,7 +6,7 @@
 /*   By: heda-sil <heda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 12:37:01 by heda-sil          #+#    #+#             */
-/*   Updated: 2022/12/30 15:01:53 by heda-sil         ###   ########.fr       */
+/*   Updated: 2023/05/12 17:11:01 by heda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static int	ft_word_size(const char *s, char c)
 	return (word_size);
 }
 
-static void	ft_free(char **str, int i)
+static void	ft_free_sp(char **str, int i)
 {
 	while (i >= 0)
 	{
@@ -75,7 +75,7 @@ static char	**ft_print_arr(char **strs, int words, char const *s, char c)
 			s++;
 		if (!strs[i])
 		{
-			ft_free(strs, i);
+			ft_free_sp(strs, i);
 			return (NULL);
 		}
 	}

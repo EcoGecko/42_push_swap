@@ -6,7 +6,7 @@
 /*   By: heda-sil <heda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 12:56:34 by heda-sil          #+#    #+#             */
-/*   Updated: 2023/05/12 14:44:29 by heda-sil         ###   ########.fr       */
+/*   Updated: 2023/05/13 11:46:35 by heda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ void	ss(t_data *data);
 void	px(t_stack *src, t_stack *dst, char *op);
 void	get_ops_cost(t_stack *stack_a, t_stack *stack_b);
 void	assign_cost(t_info *info, int size);
+void	find_pos(t_list *lst, t_info *info, int limit, int size);
 
 //OPS2
 void	rx(t_stack *stack, char *op);
@@ -83,5 +84,6 @@ void	del(void *content);
 void	clean_data(t_data *data);
 void	clean_stack(t_stack *stack);
 int		validator(char **input);
-void	is_int_range(char *input);
+int	check_values(char *input);
+
 #endif

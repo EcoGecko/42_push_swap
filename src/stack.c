@@ -6,7 +6,7 @@
 /*   By: heda-sil <heda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 11:47:31 by heda-sil          #+#    #+#             */
-/*   Updated: 2023/05/12 16:43:10 by heda-sil         ###   ########.fr       */
+/*   Updated: 2023/05/13 15:35:14 by heda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ t_stack	*create_stack(int capacity, int size)
 	stack->capacity = capacity;
 	stack->size = size;
 	stack->max = size - 1;
-	stack->cheapest = INT_MAX;
+	stack->cheapest = stack->capacity;
 	return (stack);
 }
 

@@ -6,7 +6,7 @@
 /*   By: heda-sil <heda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 13:16:45 by heda-sil          #+#    #+#             */
-/*   Updated: 2023/05/12 16:15:06 by heda-sil         ###   ########.fr       */
+/*   Updated: 2023/05/13 17:41:32 by heda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,23 +23,15 @@ void	sorter(t_data *data)
 			tri_sorter(data->a);
 		else if (data->b->size == 0 && !is_sorted(data->a))
 		{
-			while (data->a->size > 6 && data->b->size < data->a->capacity / 2)
+			while (data->a->capacity > 6 && data->b->size < data->a->capacity / 2)
 			{
-				// while (data->b->size < 2 && data->a->size > 3)
-				if (((t_info *)data->a->stack->content)->index <= data->a->capacity / 2)
+				if (((t_info *)data->a->stack->content)->index <= \
+				data->a->capacity / 2)
 					px(data->a, data->b, "pb");
 				else
 					rx(data->a, "ra");
-				
-			/* 	if (((t_info *)data->a->stack->content)->index != data->a->max \
-				&& ((t_info *)data->a->stack->content)->index != 0 && \
-				((t_info *)data->a->stack->content)->index != data->a->max / 2 \
-				&& data->a->capacity > 5) */
-				// 	px(data->a, data->b, "pb");
-				// else
-				// 	rx(data->a, "ra");
 			}
-			while (data->a->capacity - data->b->size > 3)
+			while (data->a->size > 3)
 				px(data->a, data->b, "pb");
 		}
 		sort_a(data);
@@ -104,6 +96,12 @@ void	sort_a(t_data *data)
 	{
 		if (!is_sorted(data->a) && data->a->size == 3)
 			tri_sorter(data->a);
+		get_curr_index(data->a);
+		get_curr_index(data->b);
+		// ft_printf("\n[A]\n"); //REMOVE
+		// print_stack(data->a); //REMOVE
+		// ft_printf("\n[B]\n"); //REMOVE
+		// print_stack(data->b); //REMOVE
 		get_ops_cost(data->a, data->b); //get lower cost movement and sort 	nbrs into stack b
 		do_ops(data);
 	}

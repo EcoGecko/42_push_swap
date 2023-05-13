@@ -6,7 +6,7 @@
 /*   By: heda-sil <heda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 12:43:16 by heda-sil          #+#    #+#             */
-/*   Updated: 2023/05/12 16:56:17 by heda-sil         ###   ########.fr       */
+/*   Updated: 2023/05/13 17:46:11 by heda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int	ft_min(int x, int y)
 }
 
 /* Performs stack operations */
-void	do_ops(t_data *data) //TODO! NEEDS REFACTOR SPLIT INTO TWO 
+void	do_ops(t_data *data) //TODO! NEEDS REFACTOR SPLIT INTO TWO
 {
 	t_info	*info_b;
 	t_list	*tmp;

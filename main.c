@@ -6,7 +6,7 @@
 /*   By: heda-sil <heda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 15:53:28 by heda-sil          #+#    #+#             */
-/*   Updated: 2023/05/14 16:47:55 by heda-sil         ###   ########.fr       */
+/*   Updated: 2023/05/14 19:41:48 by heda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	main(int argc, char *argv[])
 	}
 	if (validator(argv))
 	{
-		ft_putendl_fd("ERROR", STDERR_FILENO);
+		ft_putendl_fd("Error", STDERR_FILENO);
 		return (EXIT_FAILURE);
 	}
 	data.a = create_stack(argc - 1, argc - 1);

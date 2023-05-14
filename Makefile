@@ -18,8 +18,8 @@ LIBFT= ${LIBFT_DIR}/libft.a
 LIBFT_LIB= -L${LIBFT_DIR} -lft
 
 #FILES
-SRCF= sorter stack ops ops2 utils sorter_utils costs
-SRCF_B= 
+SRCF= costs ops ops2 sorter stack utils
+SRCF_B= ops_bonus ops2_bonus stack_bonus utils_bonus
 
 SRCS= $(addprefix ${SRCS_DIR}/, $(addsuffix .c, ${SRCF}))
 SRCS_BONUS= $(addprefix ${SRCS_DIR}/, $(addsuffix .c, ${SRCF_B}))
@@ -50,13 +50,17 @@ clean:
 	make clean -sC ${LIBFT_DIR}
 
 fclean: clean
-	${RM} ${NAME}
+	${RM} ${NAME} ${NAME_BONUS}
 	make fclean -sC ${LIBFT_DIR}
 
 re: fclean all
 
+bre: fclean bonus
+
 debug: ${LIBFT}
 	${CC} -g3 main.c ${SRCS} -I${INCS} ${LIBFT_LIB} -o ${NAME}
 
-.PHONY: all clean fclean re
-.SILENT:
+debugB: ${LIBFT}
+	${CC} -g3 main_bonus.c ${SRCS_BONUS} -I${INCS} ${LIBFT_LIB} -o ${NAME_BONUS}
+
+.PHONY: all bonus clean fclean re bre

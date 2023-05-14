@@ -18,7 +18,7 @@ LIBFT= ${LIBFT_DIR}/libft.a
 LIBFT_LIB= -L${LIBFT_DIR} -lft
 
 #FILES
-SRCF= costs ops ops2 sorter stack utils
+SRCF= costs ops ops2 sorter_utils sorter stack utils
 SRCF_B= ops_bonus ops2_bonus stack_bonus utils_bonus
 
 SRCS= $(addprefix ${SRCS_DIR}/, $(addsuffix .c, ${SRCF}))

@@ -6,7 +6,7 @@
 /*   By: heda-sil <heda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 12:56:34 by heda-sil          #+#    #+#             */
-/*   Updated: 2023/05/13 11:46:35 by heda-sil         ###   ########.fr       */
+/*   Updated: 2023/05/14 11:53:35 by heda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,13 +51,14 @@ void	sorter(t_data *data);
 int		is_sorted(t_stack *stack);
 void	tri_sorter(t_stack *stack);
 void	sort_a(t_data *data);
-
+void	sort(t_data *data);
 
 //SORTER_UTILS
 void	get_curr_index(t_stack *stack);
 void	get_final_index(t_stack *stack);
 int		ft_min(int	x, int y);
-void	do_ops(t_data *data);
+void	do_ops(t_data *data, t_info *info_b);
+void	continue_ops(int idx, int rot[2], int rrot[2], t_data *data);
 
 //STACK
 t_stack	*create_stack(int capacity, int size);
@@ -84,6 +85,6 @@ void	del(void *content);
 void	clean_data(t_data *data);
 void	clean_stack(t_stack *stack);
 int		validator(char **input);
-int	check_values(char *input);
+int		check_values(char *input);
 
 #endif

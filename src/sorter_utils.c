@@ -6,7 +6,7 @@
 /*   By: heda-sil <heda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 12:43:16 by heda-sil          #+#    #+#             */
-/*   Updated: 2023/05/13 17:46:11 by heda-sil         ###   ########.fr       */
+/*   Updated: 2023/05/14 11:53:03 by heda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,25 +60,15 @@ int	ft_min(int x, int y)
 }
 
 /* Performs stack operations */
-void	do_ops(t_data *data) //TODO! NEEDS REFACTOR SPLIT INTO TWO
+void	do_ops(t_data *data, t_info *info_b)
 {
-	t_info	*info_b;
-	t_list	*tmp;
 
-	tmp = data->b->stack;
-	while (tmp && data->b->cheapest != ((t_info *)tmp->content)->cost)
-		tmp = tmp->next;
-	info_b = tmp->content;
-	if (info_b->ops_idx == 0)
+	if (info_b->ops_idx == 0 || info_b->ops_idx == 3)
 	{
 		info_b->r[0] -= info_b->r[2];
 		info_b->r[1] -= info_b->r[2];
-		while (--info_b->r[2] > -1)
-			rr(data);
-		while (--info_b->r[0] > -1)
-			rx(data->a, "ra");
-		while (--info_b->r[1] > -1)
-			rx(data->b, "rb");
+		info_b->rr[0] -= info_b->rr[2];
+		info_b->rr[1] -= info_b->rr[2];
 	}
 	if (info_b->ops_idx == 1)
 	{
@@ -87,22 +77,34 @@ void	do_ops(t_data *data) //TODO! NEEDS REFACTOR SPLIT INTO TWO
 		while (--info_b->rr[1] > -1)
 			rrx(data->b, "rrb");
 	}
-	if (info_b->ops_idx == 2)
+		if (info_b->ops_idx == 2)
 	{
 		while (--info_b->rr[0] > -1)
 			rrx(data->a, "rra");
 		while (--info_b->r[1] > -1)
 			rx(data->b, "rb");
 	}
-	if (info_b->ops_idx == 3)
+	continue_ops(info_b->ops_idx, info_b->r, info_b->rr, data);
+}
+
+void	continue_ops(int idx, int rot[2], int rrot[2], t_data *data)
+{
+	if (idx == 0)
 	{
-		info_b->rr[0] -= info_b->rr[2];
-		info_b->rr[1] -= info_b->rr[2];
-		while (--info_b->rr[2] > -1)
+		while (--rot[2] > -1)
+			rr(data);
+		while (--rot[0] > -1)
+			rx(data->a, "ra");
+		while (--rot[1] > -1)
+			rx(data->b, "rb");
+	}
+	if (idx == 3)
+	{
+		while (--rrot[2] > -1)
 			rrr(data);
-		while (--info_b->rr[0] > -1)
+		while (--rrot[0] > -1)
 			rrx(data->a, "rra");
-		while (--info_b->rr[1] > -1)
+		while (--rrot[1] > -1)
 			rrx(data->b, "rrb");
 	}
 	px(data->b, data->a, "pa");

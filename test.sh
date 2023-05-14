@@ -4,7 +4,7 @@ array_size=500 # Number of elements in the array
 print_all_outputs=0 # Flag to control whether to print all outputs or just the failed ones
 num_failures=0 # Number of failed tests
 operation_limit=5500 # Maximum number of operations allowed before a test is considered failed
-ops=100 # Nbr of tests to run
+ops=1000 # Nbr of tests to run
 min_operations=9999999
 
 # ANSI color codes

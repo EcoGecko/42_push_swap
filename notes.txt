@@ -1,0 +1,5 @@
+ARG=$(shuf -i 1-10000 -n 100 | tr '\n' ' '); ./push_swap ${=ARG}
+
+clear && make && ARG=$(shuf -i 1-10000 -n 100 | tr '\n' ' '); ./push_swap ${=ARG} |wc -l && ./push_swap ${=ARG} | ./checker ${=ARG} && echo ${=ARG}
+
+eval: ARG=$(shuf -i 1-10000 -n 100 | tr '\n' ' '); valgrind  ./push_swap ${=ARG} |wc -l && ./push_swap ${=ARG} | ./checker_linux ${=ARG}

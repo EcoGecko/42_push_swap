@@ -6,7 +6,7 @@
 /*   By: heda-sil <heda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 12:56:34 by heda-sil          #+#    #+#             */
-/*   Updated: 2023/05/14 11:53:35 by heda-sil         ###   ########.fr       */
+/*   Updated: 2023/05/14 15:20:11 by heda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,15 +70,18 @@ t_list	*pop_stack(t_stack *stack);
 void	sx(t_stack *stack, char *op);
 void	ss(t_data *data);
 void	px(t_stack *src, t_stack *dst, char *op);
-void	get_ops_cost(t_stack *stack_a, t_stack *stack_b);
-void	assign_cost(t_info *info, int size);
-void	find_pos(t_list *lst, t_info *info, int limit, int size);
 
 //OPS2
 void	rx(t_stack *stack, char *op);
 void	rr(t_data *data);
 void	rrx(t_stack *stack, char *op);
 void	rrr(t_data *data);
+
+//COSTS
+void	get_ops_cost(t_stack *stack_a, t_stack *stack_b);
+void	assign_cost(t_info *info, int size);
+void	find_pos(t_stack *stack, t_info *info, int limit, int size);
+void	set_rot_a(t_info *info, int pos, int size);
 
 //UTILS
 void	del(void *content);

@@ -6,7 +6,7 @@
 /*   By: heda-sil <heda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 13:16:45 by heda-sil          #+#    #+#             */
-/*   Updated: 2023/05/14 14:17:24 by heda-sil         ###   ########.fr       */
+/*   Updated: 2023/05/14 15:05:11 by heda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ void	tri_sorter(t_stack *stack)
 	if (second->index < third->index && third->index < first->index)
 		rx(stack, "ra");
 }
+
 /* Sorts elements from stack B to A */
 void	sort(t_data *data)
 {
@@ -105,7 +106,7 @@ void	sort(t_data *data)
 		info_b = tmp->content;
 		do_ops(data, info_b);
 	}
- 	if (data->b->size == 0)
+	if (data->b->size == 0)
 		sort_a(data);
 }
 

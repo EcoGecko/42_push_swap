@@ -6,7 +6,7 @@
 /*   By: heda-sil <heda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/04 12:43:16 by heda-sil          #+#    #+#             */
-/*   Updated: 2023/05/14 11:53:03 by heda-sil         ###   ########.fr       */
+/*   Updated: 2023/05/14 15:04:58 by heda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,6 @@ int	ft_min(int x, int y)
 /* Performs stack operations */
 void	do_ops(t_data *data, t_info *info_b)
 {
-
 	if (info_b->ops_idx == 0 || info_b->ops_idx == 3)
 	{
 		info_b->r[0] -= info_b->r[2];
@@ -77,7 +76,7 @@ void	do_ops(t_data *data, t_info *info_b)
 		while (--info_b->rr[1] > -1)
 			rrx(data->b, "rrb");
 	}
-		if (info_b->ops_idx == 2)
+	if (info_b->ops_idx == 2)
 	{
 		while (--info_b->rr[0] > -1)
 			rrx(data->a, "rra");

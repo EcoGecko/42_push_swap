@@ -6,14 +6,14 @@
 /*   By: heda-sil <heda-sil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 11:37:04 by heda-sil          #+#    #+#             */
-/*   Updated: 2023/05/14 14:44:19 by heda-sil         ###   ########.fr       */
+/*   Updated: 2023/05/14 15:19:19 by heda-sil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 /* Gets all possible operations costs for each element in stack B */
-void	get_ops_cost(t_stack *stack_a, t_stack *stack_b)	
+void	get_ops_cost(t_stack *stack_a, t_stack *stack_b)
 {
 	t_list	*tmp_b;
 	t_info	*info;
@@ -23,9 +23,9 @@ void	get_ops_cost(t_stack *stack_a, t_stack *stack_b)
 	stack_b->cheapest = stack_b->capacity;
 	while (tmp_b)
 	{
-		limit = INT_MAX;
+		limit = stack_a->capacity;
 		info = ((t_info *)tmp_b->content);
-		find_pos(stack_a->stack, info, limit, stack_a->size);
+		find_pos(stack_a, info, limit, stack_a->size);
 		assign_cost(tmp_b->content, stack_b->size);
 		if (stack_b->cheapest > info->cost)
 			stack_b->cheapest = info->cost;
@@ -56,33 +56,37 @@ void	assign_cost(t_info *info, int size)
 	info->cost = info->ops[info->ops_idx];
 }
 
-void	find_pos(t_list *lst, t_info *info, int limit, int size)
+void	find_pos(t_stack *stack, t_info *info, int limit, int size)
 {
 	t_list	*tmp_a;
 
-	tmp_a = lst;
+	tmp_a = stack->stack;
 	while (tmp_a)
 	{
-		if (((t_info *)tmp_a->content)->index > info->index && ((t_info *)tmp_a->content)->index < limit)
+		if (((t_info *)tmp_a->content)->index > info->index && \
+		((t_info *)tmp_a->content)->index < limit)
 		{
 			limit = ((t_info *)tmp_a->content)->index;
-			info->r[0] = ((t_info *)tmp_a->content)->pos;
-			info->rr[0] = size - ((t_info *)tmp_a->content)->pos;
-
+			set_rot_a(info, ((t_info *)tmp_a->content)->pos, size);
 		}
 		tmp_a = tmp_a->next;
 	}
-	if (limit != INT_MAX)
+	if (limit != stack->capacity)
 		return ;
-	tmp_a = lst;
+	tmp_a = stack->stack;
 	while (tmp_a)
 	{
 		if (((t_info *)tmp_a->content)->index < limit)
 		{
 			limit = ((t_info *)tmp_a->content)->index;
-			info->r[0] = ((t_info *)tmp_a->content)->pos;
-			info->rr[0] = size - ((t_info *)tmp_a->content)->pos;
+			set_rot_a(info, ((t_info *)tmp_a->content)->pos, size);
 		}
 		tmp_a = tmp_a->next;
 	}
+}
+
+void	set_rot_a(t_info *info, int pos, int size)
+{
+	info->r[0] = pos;
+	info->rr[0] = size - pos;
 }

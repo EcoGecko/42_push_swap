@@ -20,7 +20,7 @@ for (( i=1; i<=ops; i++ )); do
   input_array=($(shuf -i 1-10000 -n $array_size | tr '\n' ' '))
   
   # Run the push_swap program with the input array, and count the number of operations
-  num_operations=$(./push_swap "${input_array[@]}" | wc -l)
+  num_operations=$(../push_swap "${input_array[@]}" | wc -l)
   
   # Print the number of operations if the print_all_outputs flag is set
   if [[ $print_all_outputs -eq 1 ]]; then
